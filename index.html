@@ -12,11 +12,14 @@
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="style.css">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
 
     
      <style>
@@ -49,16 +52,14 @@
 
         .side-bar {
             background-color: #ffffff;
-            padding: 20px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            width: 250px; /* Set a default width */
+            padding: 5px;
+
+            width: 350px; /* Set a default width */
         }
 
         .job-list {
             flex: 1;
-            padding: 20px;
+            padding: 5px;
             box-sizing: border-box;
         }
 
@@ -119,32 +120,80 @@
             color: white;
         }
 
-      /* Media query for responsive layout */
-        @media (max-width: 768px) {
-            .main-content {
-                flex-direction: column;
-            }
+     /* Media query for responsive layout */
+@media (max-width: 768px) {
+    .main-content,
+    .side-bar {
+        flex-direction: column;
+    }
 
-            .side-bar {
-                width: 100%; /* Adjust sidebar width for smaller screens */
-                order: 2; /* Change the order of divs */
-            }
+    .side-bar {
+        width: 100%; /* Adjust sidebar width for smaller screens */
+        order: 2; /* Change the order of divs */
+        margin-top: 5px; /* Add some space between main content and sidebar */
+        background-color: #f8f9fa; /* Set background color to match main content */
+        border-radius: 5px; /* Apply border radius for card-like view */
+        padding: 15px; /* Add padding */
+        margin-bottom: 10px;
+    }
 
-            .job-list {
-                order: 1; /* Change the order of divs */
-            }
+    .job-list {
+        order: 1; /* Change the order of divs */
+    }
+}
 
-            .side-bar {
-            
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                box-sizing: border-box;
-                z-index: 999; /* Ensure it appears above other content */
-            }
+         /* Custom styles for the footer */
+    footer {
+      background-color: #f8f9fa;
+      padding: 20px 0;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
 
-          
-        }
+    footer p {
+      margin-bottom: 0;
+    }
+
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+     /* Custom styles for pagination */
+    #pagination {
+        margin-top: 20px;
+    }
+
+    #pagination button {
+        margin-right: 5px;
+       background: #fff;
+    border-radius: 16%;
+    color: #0e1111;
+    font-family: Arial,sans-serif;
+    font-size: .9rem;
+    transition: all .3s;
+        cursor: pointer;
+    }
+
+    #pagination button.active {
+        background-color: #333; /* Dark grey for active button */
+        color: #fff;
+         border-radius: 5px; 
+    }
+    /* Adjustments to center the ad container */
+.ad-container {
+margin: 5px;
+display: flex;
+flex-direction: column;
+
+    align-items: center;
+ 
+}
+
     </style>
   
     <script>
@@ -167,6 +216,9 @@
         const database = firebase.database();
         const jobListRef = database.ref('jobListings');
 
+        let currentPage = 1;
+        const itemsPerPage = 5;
+
         function displayJobs() {
             const jobList = document.getElementById('jobList');
             jobList.innerHTML = ''; // Clear existing listings
@@ -177,8 +229,18 @@
 
             jobListRef.on('value', (snapshot) => {
                 if (snapshot.exists()) {
+                    const jobs = []; // Create an array to hold job listings
                     snapshot.forEach((childSnapshot) => {
                         const job = childSnapshot.val();
+                        jobs.push({ key: childSnapshot.key, ...job }); // Push each job into the array with its key
+                    });
+
+                    // Calculate pagination
+                    const startIndex = (currentPage - 1) * itemsPerPage;
+                    const endIndex = startIndex + itemsPerPage;
+                    const paginatedJobs = jobs.slice(startIndex, endIndex);
+
+                    paginatedJobs.forEach((job) => {
                         const card = document.createElement('div');
                         card.className = 'card';
                         card.innerHTML = `
@@ -186,10 +248,27 @@
                             <p>${job.companyName}</p>
                             <p>${job.location}</p>                    
                             <p>Posted: ${job.datePosted}</p>
-                            <button class="apply-button" onclick="applyForJob('${childSnapshot.key}')">Apply</button>
+                            <button class="apply-button" onclick="applyForJob('${job.key}')">Apply</button>
                         `;
                         jobList.appendChild(card);
                     });
+
+                    // Add pagination buttons
+                    const totalPages = Math.ceil(jobs.length / itemsPerPage);
+                    const paginationContainer = document.getElementById('pagination');
+                    paginationContainer.innerHTML = '';
+                 for (let i = 1; i <= totalPages; i++) {
+    const button = document.createElement('button');
+    button.textContent = i;
+    if (i === currentPage) {
+        button.classList.add('active'); // Add active class to the current page button
+    }
+    button.onclick = () => {
+        currentPage = i;
+        displayJobs();
+    };
+    paginationContainer.appendChild(button);
+}
                 } else {
                     console.log('No job listings found.');
                 }
@@ -209,7 +288,7 @@
 
         window.onload = function() {
             displayJobs();
-        }
+        };
     </script>
 
    
@@ -222,12 +301,19 @@
 
         </div>
     </div>
+      <div class="ad-container">
+  <a href="https://beta.publishers.adsterra.com/referral/EyjsvkL6AR"><img alt="banner" src="https://landings-cdn.adsterratech.com/referralBanners/png/728%20x%2090%20px.png" /></a>
+</div>
     <!-- Loading overlay -->
     
      <div class="main-content">
         <div id="loadingOverlay">
         <p class="loading-text">Loading...</p>
     </div>
+    <div class="ad-container">
+    <!-- Left column goes here -->
+</div>
+
         <div class="job-list">
             <!-- Job listings content -->
             <div id="jobList"></div>
@@ -235,10 +321,33 @@
 
         <div class="side-bar">
             <!-- Sidebar content -->
-            <h2>Sidebar Content</h2>
-            <p>Add any content you want to display here</p>
+        <div class="ad-container">
+          <a href="https://beta.publishers.adsterra.com/referral/EyjsvkL6AR"><img alt="banner" src="https://landings-cdn.adsterratech.com/referralBanners/gif/300x250_adsterra_reff.gif" /></a>
         </div>
     </div>
+    </div>
+     <!-- Pagination -->
+    <div id="pagination" class="text-center"></div>
+
+ <!-- Footer -->
+  <footer class="mt-5">
+    <div class="container text-center">
+      <p>
+        <a href="#">Terms and Conditions</a> |
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Copyright</a> |
+        <a href="#">Contact</a> |
+        <a href="#">About Us</a>
+      </p>
+      <p>&copy; 2023 Highpayingjobs.com. All Rights Reserved.</p>
+    </div>
+  </footer>
+  <!-- End of Footer -->
+
+  <!-- Bootstrap JS, jQuery, Popper.js -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
        
 </body>
