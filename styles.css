@@ -1,12 +1,12 @@
-<<<<<<< HEAD
-body {
+ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: white;
-    display: flex;        
+    display: flex;
     flex-direction: column;
-    height: 100vh; /* Ensure full height of the viewport */
+    height: 100vh;
+    /* Ensure full height of the viewport */
 }
 
 .jumbotron {
@@ -14,11 +14,13 @@ body {
     color: #000;
 
 }
-.h4{
-    color: black; 
+
+.h4 {
+    color: black;
 }
-.p{
-     color: #3b6585;
+
+.p {
+    color: #3b6585;
 }
 
 .main-content {
@@ -30,7 +32,8 @@ body {
     background-color: #ffffff;
     padding: 5px;
 
-    width: 350px; /* Set a default width */
+    width: 350px;
+    /* Set a default width */
 }
 
 .job-list {
@@ -49,203 +52,28 @@ body {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
-    background-color: #fff; /* Optional: Set a background color */
+    background-color: #fff;
+    /* Optional: Set a background color */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    overflow: hidden; /* Ensure button doesn't overlap if content exceeds card height */
+    overflow: hidden;
+    /* Ensure button doesn't overlap if content exceeds card height */
 }
 
 .apply-button {
     margin-top: auto;
-    margin-right: 10px; /* Adjust as needed for spacing */
-    margin-bottom: 10px; /* Adjust as needed for spacing */
-    align-self: flex-end;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    padding: 8px 12px;
-    border: 1px solid #CA1933; /* Red border */
-    background-color: #CA1933; /* Red background */
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.apply-button:hover {
-    background-color: #d60000; /* Darker red on hover */
-    border-color: #d60000; /* Darker red border on hover */
-}
-
-
-
-/* Styles for loading overlay */
-#loadingOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none; /* Initially hidden */
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-.loading-text {
-    color: white;
-}
-
-/* Media query for responsive layout */
-@media (max-width: 768px) {
-.main-content,
-.side-bar {
-flex-direction: column;
-}
-
-.side-bar {
-width: 100%; /* Adjust sidebar width for smaller screens */
-order: 2; /* Change the order of divs */
-margin-top: 5px; /* Add some space between main content and sidebar */
-background-color: #f8f9fa; /* Set background color to match main content */
-border-radius: 5px; /* Apply border radius for card-like view */
-padding: 15px; /* Add padding */
-margin-bottom: 10px;
-}
-
-.job-list {
-order: 1; /* Change the order of divs */
-}
-}
-
- /* Custom styles for the footer */
-footer {
-background-color: #f8f9fa;
-padding: 20px 0;
-position: relative;
-bottom: 0;
-width: 100%;
-}
-
-footer p {
-margin-bottom: 0;
-}
-
-footer a {
-color: #007bff;
-text-decoration: none;
-}
-
-footer a:hover {
-text-decoration: underline;
-}
-/* Custom styles for pagination */
-#pagination {
-margin-top: 20px;
-}
-
-#pagination button {
-margin-right: 5px;
-background: #fff;
-border-radius: 16%;
-color: #0e1111;
-font-family: Arial,sans-serif;
-font-size: .9rem;
-transition: all .3s;
-cursor: pointer;
-}
-
-#pagination button.active {
-background-color: #333; /* Dark grey for active button */
-color: #fff;
- border-radius: 5px; 
-}
-/* Adjustments to center the ad container */
-.ad-container {
-margin: 5px;
-display: flex;
-flex-direction: column; 
-
-align-items: center;
-
-}
-.custom-google-play {
-    color: #4285F4; /* Google Play text color */
-}
-
-.custom-youtube {
-    color: #FF0000; /* YouTube text color */
-}
-
-.custom-facebook {
-    color: #1877F2; /* Facebook text color */
-=======
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: white;
-    display: flex;        
-    flex-direction: column;
-    height: 100vh; /* Ensure full height of the viewport */
-}
-
-.jumbotron {
-    background-color: #CA1933;
-    color: #000;
-
-}
-.h4{
-    color: black; 
-}
-.p{
-     color: #3b6585;
-}
-
-.main-content {
-    display: flex;
-    flex: 1;
-}
-
-.side-bar {
-    background-color: #ffffff;
-    padding: 5px;
-
-    width: 350px; /* Set a default width */
-}
-
-.job-list {
-    flex: 1;
-    padding: 5px;
-    box-sizing: border-box;
-}
-
-
-
-.card {
-    position: relative;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
+    margin-right: 10px;
+    /* Adjust as needed for spacing */
     margin-bottom: 10px;
-    background-color: #fff; /* Optional: Set a background color */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    overflow: hidden; /* Ensure button doesn't overlap if content exceeds card height */
-}
-
-.apply-button {
-    margin-top: auto;
-    margin-right: 10px; /* Adjust as needed for spacing */
-    margin-bottom: 10px; /* Adjust as needed for spacing */
+    /* Adjust as needed for spacing */
     align-self: flex-end;
     position: absolute;
     bottom: 10px;
     right: 10px;
     padding: 8px 12px;
-    border: 1px solid #CA1933; /* Red border */
-    background-color: #CA1933; /* Red background */
+    border: 1px solid #CA1933;
+    /* Red border */
+    background-color: #CA1933;
+    /* Red background */
     color: white;
     border-radius: 4px;
     cursor: pointer;
@@ -253,8 +81,10 @@ body {
 }
 
 .apply-button:hover {
-    background-color: #d60000; /* Darker red on hover */
-    border-color: #d60000; /* Darker red border on hover */
+    background-color: #d60000;
+    /* Darker red on hover */
+    border-color: #d60000;
+    /* Darker red border on hover */
 }
 
 
@@ -267,7 +97,8 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    display: none; /* Initially hidden */
+    display: none;
+    /* Initially hidden */
     justify-content: center;
     align-items: center;
     z-index: 9999;
@@ -279,86 +110,166 @@ body {
 
 /* Media query for responsive layout */
 @media (max-width: 768px) {
-.main-content,
-.side-bar {
-flex-direction: column;
+
+    .main-content,
+    .side-bar {
+        flex-direction: column;
+    }
+
+    .side-bar {
+        width: 100%;
+        /* Adjust sidebar width for smaller screens */
+        order: 2;
+        /* Change the order of divs */
+        margin-top: 5px;
+        /* Add some space between main content and sidebar */
+        background-color: #f8f9fa;
+        /* Set background color to match main content */
+        border-radius: 5px;
+        /* Apply border radius for card-like view */
+        padding: 15px;
+        /* Add padding */
+        margin-bottom: 10px;
+    }
+
+    .job-list {
+        order: 1;
+        /* Change the order of divs */
+    }
 }
 
-.side-bar {
-width: 100%; /* Adjust sidebar width for smaller screens */
-order: 2; /* Change the order of divs */
-margin-top: 5px; /* Add some space between main content and sidebar */
-background-color: #f8f9fa; /* Set background color to match main content */
-border-radius: 5px; /* Apply border radius for card-like view */
-padding: 15px; /* Add padding */
-margin-bottom: 10px;
-}
-
-.job-list {
-order: 1; /* Change the order of divs */
-}
-}
-
- /* Custom styles for the footer */
+/* Custom styles for the footer */
 footer {
-background-color: #f8f9fa;
-padding: 20px 0;
-position: relative;
-bottom: 0;
-width: 100%;
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 footer p {
-margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 footer a {
-color: #007bff;
-text-decoration: none;
+    color: #007bff;
+    text-decoration: none;
 }
 
 footer a:hover {
-text-decoration: underline;
+    text-decoration: underline;
 }
+
 /* Custom styles for pagination */
 #pagination {
-margin-top: 20px;
+    margin-top: 20px;
 }
 
 #pagination button {
-margin-right: 5px;
-background: #fff;
-border-radius: 16%;
-color: #0e1111;
-font-family: Arial,sans-serif;
-font-size: .9rem;
-transition: all .3s;
-cursor: pointer;
+    margin-right: 5px;
+    background: #fff;
+    border-radius: 16%;
+    color: #0e1111;
+    font-family: Arial, sans-serif;
+    font-size: .9rem;
+    transition: all .3s;
+    cursor: pointer;
 }
 
 #pagination button.active {
-background-color: #333; /* Dark grey for active button */
-color: #fff;
- border-radius: 5px; 
+    background-color: #333;
+    /* Dark grey for active button */
+    color: #fff;
+    border-radius: 5px;
 }
+
 /* Adjustments to center the ad container */
 .ad-container {
-margin: 5px;
-display: flex;
-flex-direction: column;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
 
-align-items: center;
+    align-items: center;
 
 }
+
 .custom-google-play {
-    color: #4285F4; /* Google Play text color */
+    color: #4285F4;
+    /* Google Play text color */
 }
 
 .custom-youtube {
-    color: #FF0000; /* YouTube text color */
+    color: #FF0000;
+    /* YouTube text color */
 }
 
+
 .custom-facebook {
-    color: #1877F2; /* Facebook text color */
->>>>>>> 00438ad7304fdb5851ce08da5acb5b39b411dc46
+    color: #1877F2;
+    /* Facebook text color */
+
 }
+
+/* Navigation bar styling */
+.menu-list {
+	max-width: 300px;
+	margin: auto;
+	height: 500px;
+	color: white;
+	background-color: green;
+	border-radius: 10px;
+}
+
+.geeks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+  }
+
+  .geeks a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+  }
+
+  #menus {
+    display: flex;
+  }
+
+  #menus a {
+    margin-right: 10px;
+  }
+
+  .icon {
+    cursor: pointer;
+  }
+
+
+/* Hover effect on navigation logo and menu */
+.geeks a:hover {
+	background-color: #ddd;
+	color: black;
+}
+
+
+  .geeks a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+  }
+
+  #menus {
+    display: flex;
+  }
+
+  #menus a {
+    margin-right: 10px;
+  }
+
+  .icon {
+    cursor: pointer;
+  }
+
