@@ -12,6 +12,7 @@
 .jumbotron {
     background-color: #CA1933;
     color: #000;
+    
 
 }
 
@@ -222,36 +223,27 @@ footer a:hover {
 
 .geeks {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    color: white;
-    padding: 10px;
-  }
+    justify-content: space-evenly;
+    background-color: #ddd;
+}
 
-  .geeks a {
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-  }
-
-  #menus {
+#menus {
     display: flex;
-  }
+    align-items: center;
+    
+}
 
-  #menus a {
-    margin-right: 10px;
-  }
-
-  .icon {
-    cursor: pointer;
-  }
-
+#menus a {
+    margin: 0 10px; /* Adjust the margin as needed */
+    text-decoration: none;
+    font-weight: bolder;
+    color: #333; /* Set the desired text color */
+}
 
 /* Hover effect on navigation logo and menu */
 .geeks a:hover {
-	background-color: #ddd;
-	color: black;
+	background-color: #6d6969;
+	color: rgb(109, 106, 106);
 }
 
 
