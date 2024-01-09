@@ -227,6 +227,15 @@ footer a:hover {
     background-color: #ddd;
 }
 
+/* Add a class to make the menu sticky */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+
 #menus {
     display: flex;
     align-items: center;
@@ -264,4 +273,5 @@ footer a:hover {
   .icon {
     cursor: pointer;
   }
+
 

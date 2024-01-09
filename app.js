@@ -120,3 +120,21 @@ function geeksforgeeks() {
 function myFunction(x) {
 	x.classList.toggle("fa-minus-circle");
 }
+
+
+window.onscroll = function() { stickyMenu() };
+
+// Get the menu
+var menu = document.getElementById("menus");
+
+// Get the offset position of the menu
+var sticky = menu.offsetTop;
+
+// Add the sticky class to the menu when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function stickyMenu() {
+    if (window.pageYOffset > sticky) {
+        menu.classList.add("sticky");
+    } else {
+        menu.classList.remove("sticky");
+    }
+}
